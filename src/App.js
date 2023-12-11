@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import axios from "axios";
+import Home from "./Pages/Home";
+import SignIn from "./Pages/SignIn";
+import About from "./Pages/About";
+import Profile from "./Pages/Profile";
+import SignUp from "./Pages/SignUp";
 
 function App() {
+  axios.defaults.baseURL = "http://localhost:4000/api/"; // Set the base URL for Axios requests
+  axios.defaults.withCredentials = true;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/sign-up" element={<SignUp />} />
+      </Routes>
     </div>
   );
 }
