@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import time from "../Asset/time.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   signinStart,
@@ -74,11 +75,19 @@ const SignIn = () => {
           }}
         />
         <button
-          disabled={loading1}
+          disabled={loading1 ? true : false}
           type="submit"
-          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-80"
+          className={
+            loading1
+              ? "flex justify-center items-center bg-slate-700 text-white p-0 rounded-lg uppercase hover:opacity-90 disabled:opacity-60"
+              : "flex justify-center items-center bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-60"
+          }
         >
-          {loading1 ? "Loading" : "Sign in"}
+          {!loading1 ? (
+            "Sign Up"
+          ) : (
+            <img src={time} className="w-14 h-14 invert" alt="time" />
+          )}
         </button>
       </form>
       <div className="flex my-3 gap-1">

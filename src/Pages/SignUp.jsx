@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import time from "../Asset/time.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SignUp = () => {
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
+  const { error } = useSelector((state) => state.user);
   const [password, setpassword] = useState("");
   const [loading, setloading] = useState(false);
 
@@ -98,6 +100,11 @@ const SignUp = () => {
           <Link to="/sign-in">Sign In</Link>
         </span>
       </div>
+      {error === null ? (
+        <p className="d-none"></p>
+      ) : (
+        <p className="text-red-700 py-4">{error}</p>
+      )}
     </div>
   );
 };
