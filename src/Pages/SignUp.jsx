@@ -52,9 +52,11 @@ const SignUp = () => {
           }}
           className="border p-3 rounded-lg"
           id="username"
+          required
         />
         <input
           type="email"
+          required
           value={email}
           onChange={(e) => {
             setemail(e.target.value);
@@ -68,6 +70,7 @@ const SignUp = () => {
           placeholder="Password"
           className="border p-3 rounded-lg"
           id="password"
+          required
           value={password}
           onChange={(e) => {
             setpassword(e.target.value);

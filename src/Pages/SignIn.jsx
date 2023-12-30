@@ -57,6 +57,7 @@ const SignIn = () => {
           onChange={(e) => {
             setemail(e.target.value);
           }}
+          required
           placeholder="Email"
           className="border p-3 rounded-lg"
           id="email"
@@ -65,6 +66,7 @@ const SignIn = () => {
           type="password"
           placeholder="Password"
           className="border p-3 rounded-lg"
+          required
           id="password"
           value={password}
           onChange={(e) => {
@@ -72,10 +74,11 @@ const SignIn = () => {
           }}
         />
         <button
+          disabled={loading1}
           type="submit"
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-80"
         >
-          Sign In
+          {loading1 ? "Loading" : "Sign in"}
         </button>
       </form>
       <div className="flex my-3 gap-1">
