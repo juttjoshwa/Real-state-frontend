@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   signinStart,
   signInSuccess,
   signInFailure,
 } from "../redux/User/User.js";
 import axios from "axios";
-import toast from "react-hot-toast";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const nevigate = useNavigate();
   const [email, setemail] = useState("");
-  const [loading, setloading] = useState(false);
+  const [loading1, setloading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user);
   const [password, setpassword] = useState("");
+
+  console.log(error);
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -28,15 +30,14 @@ const SignIn = () => {
         .then((res) => {
           dispatch(signInSuccess(res.data));
           setloading(false);
-          toast.success("all ok");
-          console.log(res.data);
+          console.log(res.data.restof);
           setemail("");
           setpassword("");
         })
         .catch((err) => {
-          dispatch(signInFailure(err.message));
+          dispatch(signInFailure(err.response.data.message));
           setloading(false);
-          toast.error("not ok");
+          // console.log(err.response.data.message);
         });
     } catch (error) {
       console.log(error);
@@ -83,6 +84,11 @@ const SignIn = () => {
           <Link to="/sign-up">Sign Up</Link>
         </span>
       </div>
+      {error === null ? (
+        <p className="d-none"></p>
+      ) : (
+        <p className="text-red-700 py-4">{error}</p>
+      )}
     </div>
   );
 };
