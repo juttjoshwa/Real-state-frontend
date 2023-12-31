@@ -14,7 +14,7 @@ const SignIn = () => {
   const nevigate = useNavigate();
   const [email, setemail] = useState("");
   const [loading1, setloading] = useState(false);
-  const { loading, error } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.user);
   const [password, setpassword] = useState("");
 
   console.log(error);
