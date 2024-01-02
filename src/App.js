@@ -7,6 +7,7 @@ import About from "./Pages/About";
 import Profile from "./Pages/Profile";
 import SignUp from "./Pages/SignUp";
 import Header from "./Componets/Header";
+import PrivateRoute from "./Componets/PrivateRoute";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:4000/api/"; // Set the base URL for Axios requests
