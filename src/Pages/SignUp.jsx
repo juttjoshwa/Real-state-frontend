@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import time from "../Asset/time.png";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import OAuth from "../Componets/OAuth";
 
 const SignUp = () => {
   const [username, setusername] = useState("");
@@ -93,6 +94,7 @@ const SignUp = () => {
             <img src={time} className="w-14 h-14 invert" alt="time" />
           )}
         </button>
+        <OAuth />
       </form>
       <div className="flex my-3 gap-1">
         <p>Have an account?</p>

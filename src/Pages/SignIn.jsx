@@ -8,6 +8,7 @@ import {
   signInFailure,
 } from "../redux/User/User.js";
 import axios from "axios";
+import OAuth from "../Componets/OAuth.js";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,6 @@ const SignIn = () => {
   const [loading1, setloading] = useState(false);
   const { error } = useSelector((state) => state.user);
   const [password, setpassword] = useState("");
-
-  console.log(error);
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -84,14 +83,15 @@ const SignIn = () => {
           }
         >
           {!loading1 ? (
-            "Sign Up"
+            "Sign In"
           ) : (
             <img src={time} className="w-14 h-14 invert" alt="time" />
           )}
         </button>
+        <OAuth />
       </form>
       <div className="flex my-3 gap-1">
-        <p>Have an account?</p>
+        <p>Don't Have an account?</p>
         <span className="text-blue-700">
           <Link to="/sign-up">Sign Up</Link>
         </span>
